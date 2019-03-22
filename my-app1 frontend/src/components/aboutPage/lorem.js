@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './lorem.css'
+import './css/lorem.css'
 
 class Lorem extends Component {
     render() {

@@ -20,8 +20,8 @@ const mongoConnect = ()=>{
     });
     console.log('Connected3...');
 }
-
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', ['*']);
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -39,18 +39,18 @@ app.get('/', (req, res) =>{
 
 app.post('/login', (req, res) =>{
     let success = false;
-    console.log("req.body:", req.body);
+    var body = JSON.parse( Object.keys(req.body)[0]);
+    console.log("req.body:", body);
     let responseCall = ()=>{
         res.status(200).send({
-            success: success,
-            message: 'todos retrieved successfully',
-            todos: "My company"
+            success: "success",
+            login: success
         });
      }
-    this.userDB.findOne({"username": req.body.username}, function (err, info) {
+    this.userDB.findOne({"username": body.username}, function (err, info) {
         console.log("info:",info);
         if(info && Object.keys(info)[0]){
-            if(info.password == req.body.password){
+            if(info.password == body.password){
                 success = true;
             }
         }

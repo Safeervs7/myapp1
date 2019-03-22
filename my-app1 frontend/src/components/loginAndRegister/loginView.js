@@ -1,22 +1,44 @@
 import React, { Component } from 'react';
-
+import fetchApiLoginControl from '../../controller/loginControl';
+// const fetchApiLoginControl = require('../../controller/loginControl');
 
 class Login extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: ''
+        }
+    }
+
+    handleSubmit(event, state){
+        event.preventDefault();
+        const fetchApiLoginControlObj = new fetchApiLoginControl(state);
+        fetchApiLoginControlObj.fetchApiLoginControlCall();
+    }
+
+    handleChange(event, key){
+        let state = {};
+        state[key] = event.target.value;
+        this.setState( state )
+    }
+
     render() {
         return (
             <div className="container">
                 <div id="login-row" className="row justify-content-center align-items-center">
                     <div id="login-column" className="col-md-6">
                         <div id="login-box" className="col-md-12">
-                            <form id="login-form" className="form" action="http://localhost:3001/login" method="post">
+                            <form id="login-form" className="form" onSubmit={event => this.handleSubmit(event, this.state)}>
                                 <h3 className="text-center text-info">Login</h3>
                                 <div className="form-group">
                                     <label htmlFor="username" className="text-info">Username:</label><br></br>
-                                    <input type="text" name="username" id="username" className="form-control"></input>
+                                    <input type="text" onChange={event => this.handleChange(event, "username")} name="username" id="username" className="form-control"></input>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="password" className="text-info">Password:</label><br></br>
-                                    <input type="text" name="password" id="password" className="form-control"></input>
+                                    <input onChange={event => this.handleChange(event, "password")} type="text" name="password" id="password" className="form-control"></input>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="remember-me" className="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></input></span></label><br></br>

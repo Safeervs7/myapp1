@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Header from './header';
+import Header from '../header/header';
 import Lorem from './lorem';
-import './about.css'
+import './css/about.css'
 
 class About extends Component {
     render() {
