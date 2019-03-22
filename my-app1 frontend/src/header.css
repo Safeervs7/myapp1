@@ -1,0 +1,23 @@
+.header{
+    height: 50px;
+    background-color: black
+}
+
+.header *{
+    color: white!important;
+    background-color: black
+}
+
+.active a{
+    background-color: #5e5e5e!important;
+    color: white
+}
+
+a:hover{
+    background-color: #997a7a!important;
+    color: white
+}
+
+.navbar-header p{
+    margin: 0px;
+}
