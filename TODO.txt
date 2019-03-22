@@ -1,2 +1,4 @@
 1. return suceess and a new home page for register page after creating new user.
 2. create login success or fail notification, after success the page needs to redirect to new home page
+3. create a structure for backend and front end
+
