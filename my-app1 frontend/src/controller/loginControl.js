@@ -1,10 +1,8 @@
 import fetchApiLoginModel from '../model/loginModel';
-import RedirectHome from '../util/redirectHome';
 
 class fetchApiLoginControl{
     constructor(state){
         this.fetchApiLoginModelObj = new fetchApiLoginModel(state);
-        this.redirectHomeObj = new RedirectHome();
     };
     fetchApiLoginControlCall(){
         var redirectHome = this.redirectHomeObj;
@@ -12,11 +10,17 @@ class fetchApiLoginControl{
         var response;
         async function main() {
             response = await fetchApiLoginModelObj.fetchApiLoginModelCall();
-            console.log("response:", response);
-            redirectHome.setState({rediect: response.data.login});
+            return response;
           }
-        main();
-        return
+        return new Promise(function(resolve, reject) {
+            main()
+            .then(function (response) {
+                resolve(response);
+                return response;
+            })
+            .catch(function (error) {
+                });
+        });
     }
 }
 

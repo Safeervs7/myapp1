@@ -15,10 +15,9 @@ const mongoConnect = ()=>{
         }
         this.userDB = client.db("myapp1").collection("users");
         // client.close();
-        console.log('Connected2...');
+        console.log('Collected...');
         app.listen(3001);
     });
-    console.log('Connected3...');
 }
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,7 +28,6 @@ app.use((req, res, next) => {
     next();
 });
 app.get('/', (req, res) =>{
-    console.log("test home");
     res.status(200).send({
         success: 'true',
         message: 'todos retrieved successfully',
@@ -40,7 +38,6 @@ app.get('/', (req, res) =>{
 app.post('/login', (req, res) =>{
     let success = false;
     var body = JSON.parse( Object.keys(req.body)[0]);
-    console.log("req.body:", body);
     let responseCall = ()=>{
         res.status(200).send({
             success: "success",
@@ -48,7 +45,6 @@ app.post('/login', (req, res) =>{
         });
      }
     this.userDB.findOne({"username": body.username}, function (err, info) {
-        console.log("info:",info);
         if(info && Object.keys(info)[0]){
             if(info.password == body.password){
                 success = true;
@@ -61,7 +57,6 @@ app.post('/login', (req, res) =>{
 });
 
 app.post('/register', (req, res) =>{
-    console.log("test register",req.body.username, req.body.password_confirm == req.body.password);
     if(req.body.password_confirm == req.body.password){
         this.userDB.insertOne(
             { "username" : req.body.username,
@@ -73,5 +68,4 @@ app.post('/register', (req, res) =>{
 
 mongoConnect(() =>{
     app.listen(3001);
-    console.log("listen");
 });
