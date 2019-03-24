@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import fetchApiLoginControl from '../../controller/loginControl';
 import { Redirect } from 'react-router-dom';
+import './loginView.css'
 
 class Login extends Component {
 
@@ -10,6 +11,7 @@ class Login extends Component {
             username: '',
             password: '',
             redirect: false,
+            loginFailed: false
         }
     }
 
@@ -20,6 +22,10 @@ class Login extends Component {
             if(response.data.login){
                 var redirect = {redirect: true};
                 this.setState(redirect);
+            }
+            else{
+                var loginFailed = {loginFailed: true};
+                this.setState(loginFailed);
             }
         }
         async function main() {
@@ -57,7 +63,10 @@ class Login extends Component {
                                         <input onChange={event => this.handleChange(event, "password")} type="text" name="password" id="password" className="form-control"></input>
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="remember-me" className="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></input></span></label><br></br>
+                                        {/* <label htmlFor="remember-me" className="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></input></span></label><br></br> */}
+                                        <div id={this.state.loginFailed ? 'login-failed' : 'login-success'}>
+                                            Email or Password is incorrect
+                                        </div>
                                         <input type="submit" name="submit" className="btn btn-info btn-md" value="submit"></input>
                                     </div>
                                 </form>
