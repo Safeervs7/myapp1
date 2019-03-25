@@ -1,0 +1,23 @@
+[
+  {
+    "img": "/img/product1_640x426.jpg",
+    "name": "Apple",
+    "price": "1.99",
+    "category": "fruit",
+    "count": 2
+  }, 
+  {
+    "img": "/img/product2_640x426.jpg",
+    "name": "Orange",
+    "price": "0.99",
+    "category": "fruit",
+    "count": 1
+  }, 
+  {
+    "img": "/img/product3_640x426.jpg",
+    "name": "Pear",
+    "price": "6.00",
+    "category": "fruit",
+    "count": 4
+  }
+]

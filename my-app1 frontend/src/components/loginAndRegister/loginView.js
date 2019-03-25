@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import fetchApiLoginControl from '../../controller/loginControl';
 import { Redirect } from 'react-router-dom';
-import './loginView.css'
+import './loginView.css';
 
 class Login extends Component {
 
@@ -44,7 +44,10 @@ class Login extends Component {
 
     render() {
         if (this.state.redirect === true) {
-            return <Redirect to='/' />
+            return <Redirect to={{
+                pathname: '/',
+                state: { login: true }
+            }}/>
         }
         else{
             return (
