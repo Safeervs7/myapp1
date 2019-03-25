@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fetchApiLoginControl from '../../controller/loginControl';
+import FetchApiLoginControl from '../../controller/loginControl';
 import { Redirect } from 'react-router-dom';
 import './loginView.css';
 
@@ -29,7 +29,7 @@ class Login extends Component {
             }
         }
         async function main() {
-            const fetchApiLoginControlObj = new fetchApiLoginControl(state);
+            const fetchApiLoginControlObj = new FetchApiLoginControl(state);
             response = await fetchApiLoginControlObj.fetchApiLoginControlCall();
             stateCall();
         }

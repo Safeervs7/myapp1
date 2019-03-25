@@ -10,7 +10,6 @@ class App extends Component {
     super();
   }
   render() {
-    // console.log("this.props.location.state:", this.props.location.state.login);
     return (
       <div className="App">
         <Header active="home"/>

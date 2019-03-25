@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './css/loadUserData.css'
-var json = require('../../util/test.json');
+import './css/loadUserData.css';
+import LoadUserDataControl from '../../controller/loadUserDataControl'
 
 class LoadUserData extends Component {
 
@@ -9,8 +9,8 @@ class LoadUserData extends Component {
     }
 
     fetchData(){
-        // var jsonData = JSON.parse(json);
-        // return [json[0]];
+        var LoadUserDataControlObj = new LoadUserDataControl();
+        var json = LoadUserDataControlObj.loadUserData();
         return json;
     }
 
@@ -32,7 +32,7 @@ class LoadUserData extends Component {
                         }
             var fetchingDataView = (() =>{
                 var fetchedDataView = fetchedData.map((data) =>
-                    <div className="card-body  col-sm-4 col-md-4" style={style}>
+                    <div className="card-body  col-sm-4 col-md-3" style={style}>
                         <h5 className="card-title">{data.name}</h5>
                         <h6 className="card-subtitle mb-2 text-muted">Qnty: {data.count}</h6>
                         <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

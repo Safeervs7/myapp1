@@ -54,7 +54,7 @@ app.post('/login', (req, res) =>{
      });
      
      
-});
+}); 
 
 app.post('/register', (req, res) =>{
     if(req.body.password_confirm == req.body.password){

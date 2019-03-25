@@ -1,9 +1,8 @@
 const axios = require('axios');
 
-class fetchApiLoginModel{
+class FetchApiLoginModel{
     constructor(state){
         this.state = state;
-
     };
 
     fetchApiLoginModelCall(){
@@ -29,4 +28,4 @@ class fetchApiLoginModel{
     }
 }
 
-export default fetchApiLoginModel;
+export default FetchApiLoginModel;

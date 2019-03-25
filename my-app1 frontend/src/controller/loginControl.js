@@ -1,12 +1,12 @@
-import fetchApiLoginModel from '../model/loginModel';
+import FetchApiLoginModel from '../model/loginModel';
 
-class fetchApiLoginControl{
+class FetchApiLoginControl{
     constructor(state){
-        this.fetchApiLoginModelObj = new fetchApiLoginModel(state);
+        this.FetchApiLoginModelObj = new FetchApiLoginModel(state);
     };
     fetchApiLoginControlCall(){
         var redirectHome = this.redirectHomeObj;
-        var fetchApiLoginModelObj = this.fetchApiLoginModelObj;
+        var fetchApiLoginModelObj = this.FetchApiLoginModelObj;
         var response;
         async function main() {
             response = await fetchApiLoginModelObj.fetchApiLoginModelCall();
@@ -24,4 +24,4 @@ class fetchApiLoginControl{
     }
 }
 
-export default fetchApiLoginControl;
+export default FetchApiLoginControl;
